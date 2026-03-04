@@ -2728,3 +2728,84 @@ A	Zelda 2
 Zero Escape: Virtue's Last Reward
 ZeroRanger
 Zombies Ate My Neighbors
+
+The Battle Cats
+S	World Invasion
+S	Into the Future Battle 2
+S	Into the Future Moon
+S	Filibuster Invasion
+S	The Aku Realms Battle
+
+Gunstar Heroes
+S	Military on the Max-Power
+S	Rolling Chaser
+S	Theme of Seven Force
+S	Empire - The Final Assault
+S	Good Night, Baby!
+
+No More Heroes 2: Desperate Struggle
+S	It's Kill or be Killed Mix
+S	Philistine (JP Ver.)
+S	Subuta.1
+S	No More No
+S	Shoegazer Watched the Stars
+
+Senko no Ronde DUO: Dis-United Order
+A	Senko no Ronde DUO: Dis-United Order (Senko no Ronde 2)
+A	Senko no Ronde DUO (Dis-United Order)
+A	Senko no Ronde DUO
+A	Senko no Ronde 2
+S	Art of War
+S	Tactical Field (Culian Drop 1)
+S	Attackers Blues (Luca Phase 1)
+S	Travelers into the shadow (Ranatus Phase 2)
+S	3 Crows
+
+DoDonPachi SaiDaiOuJou
+A	DoDonPachi True Death
+S	Ran (Stage1)
+S	Kachi (Stage Clear)
+S	Niji (Stage2)
+S	Hibi (Stage4)
+S	Tenshi (True Final Boss)
+S	Ai (Stage3)
+	
+Turbo Kid
+S	Super Turbo Kid
+S	Ride or Die
+S	Becca
+S	Silver Ghost
+S	To Yesterday
+
+Super Mario Maker 2
+S	Title
+S	SMB1 Snow
+S	SMW Desert
+S	SM3DW Airship (Edit)
+S	Link Peaceful
+
+Bits & Bops
+A	Bits and Bops
+S	Snakedown
+S	Ocean Mixtape
+S	Sky Mixtape
+S	Octeaparty
+S	Flipper Snapper
+S	Firework Festival
+C	Bits and Bops is a recently released rhythm heaven-style rhythm game created by a couple of Sydney-based developers, who have long standing ties to the Australian smash community and therefore - through a degree of separation - the chase VGM community. This ost features the work of Zorsy, the pianist of well known Jazz VGM cover band The Consouls, and showcases a range of diverse and often playful tunes to partner with the various minigames' cheeky sense of humour.
+
+Hollow Knight: Silksong
+S	Bone Bottom
+S	Bellhart
+S	Choral Chambers
+S	Cogwork Core
+S	Bilewater
+S	Lace
+
+Castlevania II: Belmont's Revenge
+A	Castlevania 2: Belmont's Revenge
+S	New Messiah
+S	Praying Hands
+S	Ripe Seeds
+S	Psycho Warrior
+S	The End of the Day
