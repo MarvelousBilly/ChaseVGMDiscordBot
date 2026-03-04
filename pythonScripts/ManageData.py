@@ -236,10 +236,9 @@ def hail_mary_submissions(conn, player):
         ORDER BY place DESC
     """, (player_id, ))
     sub_list = c.fetchall()
-    print(sub_list)
 
     msg_end = ""
-    
+
     average_distance = []
 
     for game_name, has_played, place in sub_list:
