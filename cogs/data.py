@@ -156,9 +156,15 @@ class Data(commands.Cog):
         await interaction.response.send_message(msg)
 
     
+    @app_commands.command(name="hailmarysubmissions", description="""Displays how far from Hail Mary is all this player's subs are""")
+    @app_commands.describe(player='Player')
+    async def hailmarysubmissions(self, interaction: discord.Interaction, player: Optional[discord.Member] = None):
+        print(f"------\n{interaction.user} wants to know where {player}'s games are in hail mary. [{datetime.datetime.now()}]")
+        player = player or interaction.user
 
-
-
+        conn = GeneralSQL.connect()
+        msg = ManageData.hail_mary_submissions(conn, player)
+        await interaction.response.send_message(msg)
 
 
 

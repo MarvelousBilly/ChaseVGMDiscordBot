@@ -4,6 +4,7 @@ import sys
 import re
 from collections import defaultdict
 import math
+from statistics import mean
 
 sys.path.append(os.path.join(".", "pythonScripts"))  # so Python can find the module
 from GameInfo import *
@@ -59,19 +60,12 @@ def hail_mary_game(conn, game_id):
     c = conn.cursor()
 
     c.execute("""
-        SELECT name, effective_last_play, has_played, row_num
-        FROM (
-            SELECT id,
-                name,
-                effective_last_play,
-                has_played,
-                ROW_NUMBER() OVER (ORDER BY effective_last_play) AS row_num
-            FROM hail_mary
-        )
+        SELECT name, effective_last_play, has_played, place
+        FROM hail_mary
         WHERE id = ?
     """, (game_id,))
     game_name, last_play, has_played, place = c.fetchone()
-
+    
     msg = f"**{game_name}**\n"
     if(has_played == 1):
         if place > 50:
@@ -83,8 +77,7 @@ def hail_mary_game(conn, game_id):
             msg += f"Added to the ChaseVGM on episode **#{last_play}**. It is {place - 50} games from entering Hail Mary."
         else:
             msg += f"Added to the ChaseVGM on episode **#{last_play}**. It is in Hail Mary."
-
-    return(msg)
+    return msg
 
 def hail_mary(conn, count=50):
     c = conn.cursor()
@@ -204,6 +197,64 @@ def submissions(conn, player):
 
     return(msg + '```')
 
+def hail_mary_submissions(conn, player):
+    c = conn.cursor()
+
+    try:
+        ID = str(player.id)
+    except:
+        ID = player
+
+    c.execute("""
+        SELECT id, name, regular_subs, micro_subs, chaser
+        FROM players
+        WHERE discord_id = ?
+    """, (ID, ))
+    row = c.fetchone()
+
+    if not row:
+        return f"Cannot find **{player}**. Please send this over to Mia (the scoreboard name and discord name) if you think this is an error."
+
+    player_id, name, regular_subs, micro_subs, chaser = row
+    submissions = (regular_subs if regular_subs is not None else 0) + (micro_subs if micro_subs is not None else 0)
+
+    msg = f"**{name}**\nThis "
+    if chaser == True:
+        msg += f"Chaser"
+    else:
+        msg += f"player"
+
+    if(submissions == 0):
+        msg += f" has no submissions :("
+        return msg
+    
+
+    c.execute("""
+        SELECT name, has_played, place
+        FROM hail_mary
+        WHERE submitter_id = ?
+        ORDER BY place DESC
+    """, (player_id, ))
+    sub_list = c.fetchall()
+    print(sub_list)
+
+    msg_end = ""
+    
+    average_distance = []
+
+    for game_name, has_played, place in sub_list:
+        average_distance.append(0 if place <= 50 else (place - 50))
+        last_play_format = ('(' if has_played else '[') + ("HM" if place <= 50 else str(place - 50)) + (')' if has_played else ']')
+        if(place <= 50):
+            msg_end += "-" * max([len(l[0]) + 6 for l in sub_list]) + "\n"
+        msg_end += (f"{last_play_format:>5} {game_name}\n")
+
+    average_distance = int(mean(average_distance))
+    msg += "'s submission" + ("s" if submissions > 1 else "") + f" are on average **{average_distance}** from entering hail mary.\n```\n"
+    msg += msg_end + "```"
+
+    return(msg)
+
 def main():
     conn = connect()
     
@@ -216,7 +267,7 @@ def main():
     # get_episode(conn, 652, Play_Mode.REGULAR)
 
     # print(hail_mary(conn))
-    print(submissions(conn, 143411810672967680))
+    print(hail_mary_submissions(conn, 252238807297032192))
     # get_track_plays(conn, "eschatos")
 
 if __name__ == "__main__":

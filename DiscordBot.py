@@ -3,6 +3,9 @@ from discord.ext import commands
 import os
 import json
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+os.chdir(BASE_DIR)
+
 from pythonScripts import *
 from pythonScripts.Helpers import *
 
