@@ -1,0 +1,90 @@
+The Battle Cats
+S	World Invasion
+S	Into the Future Battle 2
+S	Into the Future Moon
+S	Filibuster Invasion
+S	The Aku Realms Battle
+I	https://media.discordapp.net/attachments/1152527757406900224/1477503674782847058/folder.jpg?ex=69a5a8c6&is=69a45746&hm=3fa2c8e6a6a64e8516bc3014beaec854a21eef571b117d59945a2dc821d5332e&=&format=webp
+
+Gunstar Heroes
+S	Military on the Max-Power
+S	Rolling Chaser
+S	Theme of Seven Force
+S	Empire - The Final Assault
+S	Good Night, Baby!
+I	https://media.discordapp.net/attachments/1152527757406900224/1477503902252535962/folder.jpg?ex=69a5a8fc&is=69a4577c&hm=4603fb3b2629bf2653afc412915a508087bb776c742f84b2f284c388fb89e986&=&format=webp
+
+No More Heroes 2: Desperate Struggle
+S	It's Kill or be Killed Mix
+S	Philistine (JP Ver.)
+S	Subuta.1
+S	No More No
+S	Shoegazer Watched the Stars
+I	https://media.discordapp.net/attachments/1152527757406900224/1477504138584526979/folder.jpg?ex=69a5a935&is=69a457b5&hm=444b7bb9ff2b2a43d6a8a5f8eaff0ae5d025ada5db698c40615048c8b0c837c9&=&format=webp
+
+Senko no Ronde DUO: Dis-United Order
+A	Senko no Ronde DUO: Dis-United Order (Senko no Ronde 2)
+A	Senko no Ronde DUO (Dis-United Order)
+A	Senko no Ronde DUO
+A	Senko no Ronde 2
+S	Art of War
+S	Tactical Field (Culian Drop 1)
+S	Attackers Blues (Luca Phase 1)
+S	Travelers into the shadow (Ranatus Phase 2)
+S	3 Crows
+I	https://media.discordapp.net/attachments/1152527757406900224/1477504352603340800/folder.jpg?ex=69a5a968&is=69a457e8&hm=2abd525ca6898ca270a67368ee5227356171e9f60d9e68a5667e20f46e9a3059&=&format=webp
+
+DoDonPachi SaiDaiOuJou
+A	DoDonPachi True Death
+S	Ran (Stage1)
+S	Kachi (Stage Clear)
+S	Niji (Stage2)
+S	Hibi (Stage4)
+S	Tenshi (True Final Boss)
+S	Ai (Stage3)
+I	https://media.discordapp.net/attachments/1152527757406900224/1477504613539385404/folder.jpg?ex=69a5a9a6&is=69a45826&hm=2ea0382042c9dd26b725bbede394d9b339340f54420b3b3cc3a96f7271c122ce&=&format=webp
+	
+Turbo Kid
+S	Super Turbo Kid
+S	Ride or Die
+S	Becca
+S	Silver Ghost
+S	To Yesterday
+I	https://media.discordapp.net/attachments/1152527757406900224/1477504846264406046/folder.jpg?ex=69a5a9de&is=69a4585e&hm=c49765fb0e23fb0dbc1bcb4aaaecc9642d5131ee849385eb6d0a64c386b7cf7c&=&format=webp
+
+Super Mario Maker 2
+S	Title
+S	SMB1 Snow
+S	SMW Desert
+S	SM3DW Airship (Edit)
+S	Link Peaceful
+I	https://media.discordapp.net/attachments/1152527757406900224/1477505014292549652/folder.jpg?ex=69a5aa06&is=69a45886&hm=6f7d0d7b03f169ff42aefbf39728e2f1cfa5dd25f06649b707ebaa3b1ca3a4c0&=&format=webp
+
+Bits & Bops
+A	Bits and Bops
+S	Snakedown
+S	Ocean Mixtape
+S	Sky Mixtape
+S	Octeaparty
+S	Flipper Snapper
+S	Firework Festival
+C	Bits and Bops is a recently released rhythm heaven-style rhythm game created by a couple of Sydney-based developers, who have long standing ties to the Australian smash community and therefore - through a degree of separation - the chase VGM community. This ost features the work of Zorsy, the pianist of well known Jazz VGM cover band The Consouls, and showcases a range of diverse and often playful tunes to partner with the various minigames' cheeky sense of humour.
+I	https://media.discordapp.net/attachments/1152527757406900224/1477505312264290396/folder.jpg?ex=69a5aa4d&is=69a458cd&hm=ee1aefcd551abe5115ed02e10fb17e47b51e90a89ec1ee411d21dd5aed7d94f1&=&format=webp
+
+Hollow Knight: Silksong
+S	Bone Bottom
+S	Bellhart
+S	Choral Chambers
+S	Cogwork Core
+S	Bilewater
+S	Lace
+I	https://media.discordapp.net/attachments/1152527757406900224/1477505594184302713/folder.jpg?ex=69a5aa90&is=69a45910&hm=ffe1420547172c0ed161bc8219bda22908fae6712e05999fd71927f7f2ef9347&=&format=webp
+
+Castlevania II: Belmont's Revenge
+A	Castlevania 2: Belmont's Revenge
+S	New Messiah
+S	Praying Hands
+S	Ripe Seeds
+S	Psycho Warrior
+S	The End of the Day
+I	https://media.discordapp.net/attachments/1152527757406900224/1477505803937382601/folder.jpg?ex=69a5aac2&is=69a45942&hm=bc1658a1b6e22267abee36f9ee1a18beaa50726d7eae292c982bf4367fd40eb2&=&format=webp
