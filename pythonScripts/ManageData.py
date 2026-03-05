@@ -6,11 +6,13 @@ from collections import defaultdict
 import math
 from statistics import mean
 
+
 sys.path.append(os.path.join(".", "pythonScripts"))  # so Python can find the module
 from GameInfo import *
 from GeneralSQL import *
 from Helpers import *
 from GetTracks import *
+import GameSearch
 
 def get_sub_tracks(conn, game_name):
     c = conn.cursor()
@@ -58,6 +60,15 @@ def get_episode(conn, episode, mode=Play_Mode.REGULAR):
     
 def hail_mary_game(conn, game_id):
     c = conn.cursor()
+
+    c.execute(""" 
+        SELECT expansion_game_id
+        FROM games
+        WHERE id = ?
+    """, (game_id, ))
+    expansion_id = c.fetchone()[0]
+    if(expansion_id): #swap to base game id if looking at expansion
+        game_id = expansion_id
 
     c.execute("""
         SELECT name, effective_last_play, has_played, place
@@ -256,7 +267,7 @@ def hail_mary_submissions(conn, player):
 
 def main():
     conn = connect()
-    
+
     # which_games_are_missing(conn)
 
     # game_name = "arknights"
@@ -266,7 +277,7 @@ def main():
     # get_episode(conn, 652, Play_Mode.REGULAR)
 
     # print(hail_mary(conn))
-    print(hail_mary_submissions(conn, 252238807297032192))
+    # print(hail_mary_submissions(conn, 252238807297032192))
     # get_track_plays(conn, "eschatos")
 
 if __name__ == "__main__":
