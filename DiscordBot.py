@@ -54,7 +54,7 @@ async def on_message(message):
                 await attachment.save(output_path)
                 await message.delete()
 
-                e = GenerateData.add_episode(conn)
+                e = GenerateData.new_episode(conn)
                 if e is None:            
                     await message.channel.send("Episode added.")
                 else:

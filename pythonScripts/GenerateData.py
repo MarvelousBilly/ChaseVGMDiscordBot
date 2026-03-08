@@ -108,10 +108,7 @@ def update_points_submissions(conn):
         for row in csvreader:
             rows.append(row)
 
-
     for row in rows:
-
-        
         player_name = row[0]
         player_points = int(row[1])
         player_regular_subs = None
@@ -144,7 +141,7 @@ def update_points_submissions(conn):
                 game_name = game_name[:-4]
             game_id = get_base_id_from_game_name(conn, game_name) #errors if not found
 
-            print(player_name, player_id, game_name, game_id)
+            # print(player_name, player_id, game_name, game_id)
 
             c.execute("""
                 UPDATE games
@@ -236,11 +233,15 @@ def new_subs(conn): #just add the new subs
     print("Done new subs")
     
 def new_episode(conn): #runs after each episode / batch drop
-    add_episode(conn)
-    update_game_last_play(conn)
-    which_games_are_missing_arts(conn) #print out any games (base only) that have missing boxarts (or filename is wrong)
-    update_points_submissions(conn)
-    print("Done update")
+    e = add_episode(conn)
+    if(e is None):
+        update_game_last_play(conn)
+        which_games_are_missing_arts(conn) #print out any games (base only) that have missing boxarts (or filename is wrong)
+        update_points_submissions(conn)
+        print("Done update")
+    else:
+        print(f"Error: {e}")
+        return e
     
 
 
