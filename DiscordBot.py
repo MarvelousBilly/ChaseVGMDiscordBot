@@ -67,7 +67,7 @@ async def on_message(message):
                         ["git", "commit", "-m", f"Added episode {combined_number}"],
                         cwd="/home/mia/discord.py"
                     )
-                    subprocess.run(["git", "push", "origin", "HEAD"], cwd="/home/mia/discord.py")
+                    subprocess.run(["git", "push", "origin", "HEAD/main"], cwd="/home/mia/discord.py")
                 else:
                     await message.channel.send(str(e))
 
