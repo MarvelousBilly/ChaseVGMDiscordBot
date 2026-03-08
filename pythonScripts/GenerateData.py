@@ -188,7 +188,6 @@ def add_episode(conn):
         if "The_Chase_VGM" in filename:
             new_episode_file_path = os.path.join(directory, filename)
             already_in = False
-                
 
             with open(new_episode_file_path, 'r+', encoding='utf-8', errors='replace') as file: #update file to include header formatting and stuff
                 content = file.read()
@@ -204,8 +203,11 @@ def add_episode(conn):
                     file.write(content + '\n\n\n\n')
                     file.truncate()
             if(not already_in):
-                all_tracks(conn, os.path.join(directory, filename)) #read in the new file
-                process_file(directory, filename)
+                e = all_tracks(conn, os.path.join(directory, filename)) #read in the new file
+                if e == None:
+                    process_file(directory, filename)
+                else:
+                    return e
             else:
                 print(f"Removing {filename}")
                 os.remove(new_episode_file_path)

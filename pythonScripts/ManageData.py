@@ -265,6 +265,41 @@ def hail_mary_submissions(conn, player):
 
     return(msg)
 
+def game_streaks(conn):
+    c = conn.cursor()
+    def game_from_track_id(track_id):
+        c.execute("""
+        SELECT t.game_id
+        FROM tracks t
+        WHERE id = ?
+        """, (track_id, ))
+        return c.fetchone()[0]
+
+    c.execute("""
+        SELECT track_id, episode, track_num, mode
+        FROM plays
+        WHERE mode = 2 OR mode = 3
+    """)
+    rows = c.fetchall()
+    streak = [game_from_track_id(rows[0][0]), 1]
+
+
+    current_episode = rows[0][1] #first episode
+    for track_id, episode, track_num, mode in rows:
+        if episode != current_episode: #episode ended, restart streak
+           current_episode = episode
+           streak = [game_from_track_id(track_id), 1]
+        else:
+            game_id = game_from_track_id(track_id)
+            if game_id == streak[0]: #game is the same, streak continues
+                streak[1] += 1
+            else: #streak dies
+                if(streak[1] > 2):
+                    game_name = get_game_name_from_id(conn, streak[0])
+                    print(f"{game_name} played {streak[1]} times in a row on episode {current_episode}")
+                streak = [game_from_track_id(track_id), 1]
+    
+
 def main():
     conn = connect()
 
@@ -279,6 +314,7 @@ def main():
     # print(hail_mary(conn))
     # print(hail_mary_submissions(conn, 252238807297032192))
     # get_track_plays(conn, "eschatos")
+    # game_streaks(conn)
 
 if __name__ == "__main__":
     os.chdir(os.path.dirname(os.path.abspath(__file__)))  # current script directory

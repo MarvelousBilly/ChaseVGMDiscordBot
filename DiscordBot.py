@@ -48,5 +48,18 @@ async def on_message(message):
     if(message.channel.id in logging_channels):
         print(f'Message in {message.channel.guild}, from: {message.author}, with content: {message.content}')
 
+        for attachment in message.attachments:
+            if "The_Chase_VGM" in attachment.filename:
+                output_path = os.path.join("./files", attachment.filename)
+                await attachment.save(output_path)
+                await message.delete()
+
+                e = GenerateData.add_episode(conn)
+                if e is None:            
+                    await message.channel.send("Episode added.")
+                else:
+                    await message.channel.send(str(e))
+
+
 print("Bot starting...")
 client.run(token)

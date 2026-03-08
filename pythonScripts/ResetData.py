@@ -169,8 +169,11 @@ def all_tracks(conn, filepath = os.path.join(".", "data", "Chase_Episodes_Full.t
                             print("Bad: '" + l.rstrip() + "' on line " + str(c) + " in chase " + str(current_chase))
                             print(e)
                             print()
+                            conn.rollback()
+                            return e
                             
     conn.commit()
+    return
     
 if __name__ == "__main__":
     os.chdir(os.path.dirname(os.path.abspath(__file__)))  # current script directory
