@@ -1,7 +1,9 @@
 import discord
 from discord.ext import commands
+import subprocess
 import os
 import json
+import re
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 os.chdir(BASE_DIR)
@@ -55,8 +57,17 @@ async def on_message(message):
                 await message.delete()
 
                 e = GenerateData.new_episode(conn)
-                if e is None:            
+                if e is None:
                     await message.channel.send("Episode added.")
+                    numbers = re.findall(r'\d+', attachment.filename)
+                    combined_number = ''.join(numbers) if numbers else 'NoNumberFound' #episode num of filename
+
+                    subprocess.run(["git", "add", "."], cwd="/home/mia/discord.py")
+                    subprocess.run(
+                        ["git", "commit", "-m", f"Added episode {combined_number}"],
+                        cwd="/home/mia/discord.py"
+                    )
+                    subprocess.run(["git", "push"], cwd="/home/mia/discord.py")
                 else:
                     await message.channel.send(str(e))
 
