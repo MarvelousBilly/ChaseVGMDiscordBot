@@ -10,7 +10,7 @@ from GameInfo import *
 from GeneralSQL import *
 from ResetData import *
 from Helpers import *
-
+from UpdateGoogleSheet import *
 import GoogleSheetsAPI
 
 def debuts(conn): #will work whenever
@@ -153,9 +153,6 @@ def update_points_submissions(conn):
 
     conn.commit()
 
-
-
-
 def add_episode(conn):
     def is_episode_in_file(episode):
         with open(os.path.join(".","data","Chase_Episodes_Full.txt"), 'r', encoding='utf-8', errors='replace') as f:
@@ -209,8 +206,6 @@ def add_episode(conn):
                 print(f"Removing {filename}")
                 os.remove(new_episode_file_path)
 
-
-    
 def reset(conn):
     c = conn.cursor() #reset everything :)
     c.execute("DELETE FROM games")
@@ -234,10 +229,11 @@ def new_subs(conn): #just add the new subs
     
 def new_episode(conn): #runs after each episode / batch drop
     e = add_episode(conn)
-    if(e is None):
+    if(e is None): #if the episode add is all fine and dandy:
         update_game_last_play(conn)
         which_games_are_missing_arts(conn) #print out any games (base only) that have missing boxarts (or filename is wrong)
         update_points_submissions(conn)
+        update_google_sheet(conn)
         print("Done update")
     else:
         print(f"Error: {e}")
@@ -251,7 +247,7 @@ def main():
     
     # reset(conn)
     # new_subs(conn)
-    new_episode(conn)
+    which_games_are_missing_arts(conn)
     
 
         
