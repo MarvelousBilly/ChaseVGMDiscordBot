@@ -6,8 +6,12 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+# Don't track the logs
 /logs
 /logs_err
+
+#
+*/game_data.db
 
 .vscode/
 
