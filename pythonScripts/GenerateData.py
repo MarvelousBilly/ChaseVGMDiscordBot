@@ -200,7 +200,7 @@ def add_episode(conn):
                 content = file.read()
                 numbers = re.findall(r'\d+', filename)
                 combined_number = ''.join(numbers) if numbers else 'NoNumberFound' #episode num of filename
-                already_in = is_episode_in_file(combined_number)
+                already_in = is_episode_in_file(conn, combined_number)
 
                 if("************************************************************************\n") not in content: #if need to add the fancy bits
                     file.seek(0)
