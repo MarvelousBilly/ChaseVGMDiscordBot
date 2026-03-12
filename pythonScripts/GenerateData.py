@@ -215,11 +215,17 @@ def add_episode(conn):
                 if e == None:
                     process_file(directory, filename)
                 else:
+                    print(f"Removing {filename}") #remove files in case of error
+                    os.remove(new_episode_file_path)
                     return e
+                
             elif(already_in == Episode_Status.HAD_ERROR):
                 e = all_tracks(conn, os.path.join(directory, filename)) #read in the new file
                 if not (e == None): #had error adding (again lols), return the error message
+                    print(f"Removing {filename}") #remove files in case of error
+                    os.remove(new_episode_file_path)
                     return e
+                
             else: #ALREADY_IN
                 print(f"Removing {filename}")
                 os.remove(new_episode_file_path)
