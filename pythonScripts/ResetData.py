@@ -170,7 +170,7 @@ def all_tracks(conn, filepath = os.path.join(".", "data", "Chase_Episodes_Full.t
                             print(e)
                             print()
                             conn.rollback()
-                            return e
+                            return "Bad: '" + l.rstrip() + "' on line " + str(c) + " in chase " + str(current_chase) + ": " + str(e)
                             
     conn.commit()
     return

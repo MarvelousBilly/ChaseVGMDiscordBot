@@ -347,7 +347,7 @@ def main():
 
     # get_episode(conn, 652, Play_Mode.REGULAR)
 
-    # print(hail_mary(conn))
+    print(hail_mary(conn))
     # print(hail_mary_submissions(conn, 252238807297032192))
     # get_track_plays(conn, "eschatos")
     # game_streaks(conn)
