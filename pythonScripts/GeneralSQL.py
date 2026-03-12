@@ -11,7 +11,7 @@ def connect():
     try:
         conn = sqlite3.connect(os.path.join(".", "data", "game_data.db"))
     except:
-        conn = sqlite3.connect(os.path.join("\\192.168.1.223", "database", "game_data.db"))
+        conn = sqlite3.connect(os.path.join("\\192.168.1.223", "database", "data", "game_data.db"))
         
     conn.execute("PRAGMA foreign_keys = ON")
     return conn

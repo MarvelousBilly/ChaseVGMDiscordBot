@@ -11,7 +11,10 @@ __pycache__/
 /logs_err
 
 #
-*/game_data.db
+*/game_data_*.db
+
+# ignore the backups
+/data */ 
 
 .vscode/
 

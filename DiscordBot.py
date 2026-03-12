@@ -59,15 +59,6 @@ async def on_message(message):
                 e = GenerateData.new_episode(conn)
                 if e is None:
                     await message.channel.send("Episode added.")
-                    numbers = re.findall(r'\d+', attachment.filename)
-                    combined_number = ''.join(numbers) if numbers else 'NoNumberFound' #episode num of filename
-
-                    subprocess.run(["git", "add", "."], cwd="/home/mia/discord.py")
-                    subprocess.run(
-                        ["git", "commit", "-m", f"Added episode {combined_number}"],
-                        cwd="/home/mia/discord.py"
-                    )
-                    subprocess.run(["git", "push", "origin", "HEAD/main"], cwd="/home/mia/discord.py")
                 else:
                     await message.channel.send(str(e))
 

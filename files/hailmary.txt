@@ -35,7 +35,6 @@ Hail Mary Games (Last Played)/[Unplayed]
 (579) Tekken 7
 (580) Chicory: A Colorful Tale
 (581) Flip Over Frog
-(581) The Legend of Zelda: Spirit Tracks
 (582) Marvel Super Heroes vs. Street Fighter
 (582) Mega Man: The Wily Wars
 (582) The Elder Scrolls IV: Oblivion
@@ -50,3 +49,4 @@ Hail Mary Games (Last Played)/[Unplayed]
 (586) Pokémon Ruby / Sapphire Version
 [587] Arknights
 (588) Super Mario Land 2: 6 Golden Coins
+(589) ICO
