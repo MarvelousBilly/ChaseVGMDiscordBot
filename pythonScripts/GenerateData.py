@@ -4,6 +4,7 @@ import sys
 import re
 import csv
 from collections import defaultdict
+from enum import Enum
 
 sys.path.append(os.path.join(".", "pythonScripts"))  # so Python can find the module
 from GameInfo import *
@@ -154,14 +155,26 @@ def update_points_submissions(conn):
     conn.commit()
 
 def add_episode(conn):
-    def is_episode_in_file(episode):
+    class Episode_Status(Enum):
+        BRAND_NEW    = 0
+        HAD_ERROR    = 1
+        ALREADY_IN   = 2
+
+    def is_episode_in_file(conn, episode):
+        c = conn.cursor()
+        c.execute("""SELECT count(episode) FROM plays WHERE episode = ?""", (episode, )) #check db for the episode first
+        if c.fetchone()[0] > 0:
+            print("Episode " + episode + " is already in the database!")
+            return Episode_Status.ALREADY_IN
+        
         with open(os.path.join(".","data","Chase_Episodes_Full.txt"), 'r', encoding='utf-8', errors='replace') as f:
             for l in f:
                 if "c:\\users\\aakadarr\\desktop\\games\\q\\chase episodes 2\\The Chase VGM #" + episode + ".txt" in l.strip():
-                    print("Episode " + episode + " is already in!")
-                    return True
+                    print("Episode " + episode + " is already in the file, but not the database!") 
+                    return Episode_Status.HAD_ERROR
             f.close()
-            return False
+
+        return Episode_Status.BRAND_NEW
         
     def process_file(directory, filename):
         filepath = os.path.join(".", "data", "Chase_Episodes_Full.txt")
@@ -189,20 +202,25 @@ def add_episode(conn):
                 combined_number = ''.join(numbers) if numbers else 'NoNumberFound' #episode num of filename
                 already_in = is_episode_in_file(combined_number)
 
-                if("************************************************************************\n") not in content:
+                if("************************************************************************\n") not in content: #if need to add the fancy bits
                     file.seek(0)
                     file.write("c:\\users\\aakadarr\\desktop\\games\\q\\chase episodes 2\\The Chase VGM #" + combined_number + ".txt\n")
                     file.write("************************************************************************\n")
                     file.write("\n\n\n\n\n")
                     file.write(content + '\n\n\n\n')
                     file.truncate()
-            if(not already_in):
+                    
+            if(already_in == Episode_Status.BRAND_NEW):
                 e = all_tracks(conn, os.path.join(directory, filename)) #read in the new file
                 if e == None:
                     process_file(directory, filename)
                 else:
                     return e
-            else:
+            elif(already_in == Episode_Status.HAD_ERROR):
+                e = all_tracks(conn, os.path.join(directory, filename)) #read in the new file
+                if not (e == None): #had error adding (again lols), return the error message
+                    return e
+            else: #ALREADY_IN
                 print(f"Removing {filename}")
                 os.remove(new_episode_file_path)
 
