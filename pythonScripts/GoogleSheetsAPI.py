@@ -1,11 +1,11 @@
-from google.oauth2 import service_account
+from google.oauth2 import service_account # type: ignore
 from googleapiclient.discovery import build
 import csv
 import os
 
 def main(sheetID, rangeVal, filename_base):
     # service account key file
-    SERVICE_ACCOUNT_FILE = os.path.join(".", "data", "long-equinox-460223-f6-db89ecf412ff.json")
+    SERVICE_ACCOUNT_FILE = os.path.join(".", "data", "keys", "long-equinox-460223-f6-db89ecf412ff.json")
     SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
     # credentials and service

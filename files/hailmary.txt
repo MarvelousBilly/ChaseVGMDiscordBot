@@ -2,10 +2,8 @@ Hail Mary Games (Last Played)/[Unplayed]
 
 (504) Kingdom Hearts Re:Chain of Memories
 (510) Ratchet and Clank
-(516) Wario Land: Shake It!
 (532) Pokémon X / Y
 (536) Pikmin 3
-(537) Age of Empires 2: The Age of Kings
 (539) Turok 2: Seeds of Evil
 (545) Little Nemo: The Dream Master
 (548) Splatoon 2
@@ -27,7 +25,6 @@ Hail Mary Games (Last Played)/[Unplayed]
 (577) Shin Megami Tensei III: Nocturne
 (578) Dustforce
 (578) WarioWare: Touched!
-(579) Grandia II
 (579) Plants vs. Zombies
 [579] Shadowgate
 (579) Spelunker
@@ -40,7 +37,6 @@ Hail Mary Games (Last Played)/[Unplayed]
 (582) The Elder Scrolls IV: Oblivion
 (582) Wizardry V: Heart of the Maelstrom
 (584) Castlevania: Curse of Darkness
-(584) Final Fantasy XII
 (584) The Goonies
 (584) Warcraft III: Reign of Chaos
 (585) Atomica Deluxe
@@ -48,5 +44,9 @@ Hail Mary Games (Last Played)/[Unplayed]
 (585) MediEvil
 (586) Pokémon Ruby / Sapphire Version
 [587] Arknights
-(588) Super Mario Land 2: 6 Golden Coins
-(589) ICO
+(589) Mega Man X4
+(589) SpongeBob SquarePants: Battle for Bikini Bottom (Rehydrated)
+(590) Dead Space
+(590) Witch on the Holy Night
+(591) Pokémon Super Mystery Dungeon
+(591) Professor Layton and the Miracle Mask

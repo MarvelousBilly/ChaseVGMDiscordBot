@@ -158,19 +158,19 @@ def all_tracks(conn, filepath = os.path.join(".", "data", "Chase_Episodes_Full.t
                             track = re.sub(pattern, '', track)
                             if(track == "'"):
                                 track = "\u2800"
-                            game_name = split_string[0] if (mode == Play_Mode.REGULAR or current_chase < 361 or mode == Play_Mode.TIME_RAID or Type == 1) else split_string[0][4:] if mode == Play_Mode.FINAL_CHASE else split_string[0][5:]
+                            game_name = split_string[0] if (mode == Play_Mode.REGULAR or current_chase < 361 or mode == Play_Mode.TIME_RAID or Type == 1) else split_string[0][4:] if mode == Play_Mode.FINAL_CHASE else split_string[0][5:] # type: ignore
                                                         
                             if(game_name == "Excitebike"):
                                 continue
                             
-                            add_track(conn, Track(game_name, track, False, Play(current_chase, mode, track_num)))
+                            add_track(conn, Track(game_name, track, False, Play(current_chase, mode, track_num))) # type: ignore
 
                         except Exception as e:
-                            print("Bad: '" + l.rstrip() + "' on line " + str(c) + " in chase " + str(current_chase))
+                            print("Bad: '" + l.rstrip() + "' on line " + str(c) + " in chase " + str(current_chase)) # type: ignore
                             print(e)
                             print()
                             conn.rollback()
-                            return "Bad: '" + l.rstrip() + "' on line " + str(c) + " in chase " + str(current_chase) + ": " + str(e)
+                            return "Bad: '" + l.rstrip() + "' on line " + str(c) + " in chase " + str(current_chase) + ": " + str(e) # type: ignore
                             
     conn.commit()
     return

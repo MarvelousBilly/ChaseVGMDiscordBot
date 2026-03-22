@@ -13,33 +13,47 @@ from Helpers import *
 from GetTracks import *
 import GameSearch
 
-def merge_tracks(conn, track_id_from, track_id_to):
+def merge_tracks(conn, track_id_remove, track_id_keep):
     # edit all track_ids in plays that mach track_id_from and make them track_id_to, and then delete the track with id of track_id_from
     c = conn.cursor()
     c.execute("""
         SELECT id, name FROM tracks
         WHERE id = ? OR id = ?
-    """, (track_id_from, track_id_to))
+    """, (track_id_remove, track_id_keep))
     rows = c.fetchall()
     print(rows)
     try:
-        name_to = rows[0][1] if rows[0][0] == track_id_from else rows[1][1]
-        name_from = rows[1][1] if rows[0][0] == track_id_from else rows[0][1]
-        i = input(f"Double check: Replace {name_to} with {name_from}? (Y/n): ")
-        if(i.lower().rstrip() == "y"):
-            print("Processing")
+        c.execute("""
+            SELECT MAX(sub_track)
+            FROM tracks 
+            WHERE id=? OR id=?
+        """, (track_id_remove, track_id_keep))
+        sub_track = c.fetchone()[0]
 
+        name_to   = rows[0][1] if rows[0][0] == track_id_remove else rows[1][1]
+        name_from = rows[1][1] if rows[0][0] == track_id_remove else rows[0][1]
+        i = input(f"Double check: Replace \"{name_to}\" with \"{name_from}\"? {'It is a sub track. ' if sub_track else ''}(Y/n): ")
+        if(i.lower().rstrip() == "y"):
             c.execute("""
                 UPDATE plays
                 SET track_id = ?
                 WHERE track_id = ?
-            """, (track_id_to, track_id_from))
+            """, (track_id_keep, track_id_remove))
+
             c.execute("""
                 DELETE FROM tracks
                 WHERE id = ?
-            """, (track_id_from, ))
+            """, (track_id_remove, ))
+
+            c.execute("""
+                UPDATE tracks
+                SET sub_track = ?
+                WHERE id = ?
+            """, (sub_track, track_id_keep))
 
             conn.commit()
+            
+            print("Processed")
             return
         else:
             print("Canceled.")
@@ -337,7 +351,7 @@ def game_streaks(conn):
 def main():
     conn = connect()
 
-    # merge_tracks(conn, 10850, 12314)
+    merge_tracks(conn, track_id_remove=1729, track_id_keep=12593)
 
     # which_games_are_missing(conn)
 
@@ -347,7 +361,7 @@ def main():
 
     # get_episode(conn, 652, Play_Mode.REGULAR)
 
-    print(hail_mary(conn))
+    # print(hail_mary(conn))
     # print(hail_mary_submissions(conn, 252238807297032192))
     # get_track_plays(conn, "eschatos")
     # game_streaks(conn)
