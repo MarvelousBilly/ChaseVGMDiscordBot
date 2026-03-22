@@ -23,8 +23,11 @@ __pycache__/
 */boxarts/
 */glorp/
 
-# dont include these files
+# dont include these temp files
 */files/*
+
+# dont include the discord id or new sub stuff
+*/player_discord_id.txt
 
 # ignore the backups
 /data */ 
