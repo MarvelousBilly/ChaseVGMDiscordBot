@@ -10,8 +10,21 @@ __pycache__/
 /logs
 /logs_err
 
-#
-*/game_data_*.db
+# dont add any databases
+*/*.db
+
+# dont add my keys
+*/keys/
+
+# dont add sheet info
+*/sheets/
+
+# dont add boxarts 
+*/boxarts/
+*/glorp/
+
+# dont include these files
+*/files/*
 
 # ignore the backups
 /data */ 
