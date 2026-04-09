@@ -33,7 +33,7 @@ class TrackButtonView(discord.ui.View):
 
         # Pre-generate all embeds using filename passed in
         for self.page in range(1, self.total_pages+1):
-            self.embeds.append(GetTracks.get_track_embed(conn, self.game_name, self.track_plays, self.page, self.per_page, self.total_pages, filename))
+            self.embeds.append(GetTracks.get_track_embed(conn, self.game_name, self.track_plays, self.page, self.per_page, self.total_pages, filename)) # type: ignore
         self.page = 1
     
     @classmethod
@@ -56,22 +56,22 @@ class TrackButtonView(discord.ui.View):
         return cls(conn, game_name, per_page, filename=filename)
 
     def update_buttons(self):
-        self.children[0].disabled = self.page == 1
-        self.children[1].disabled = self.page == self.total_pages
+        self.children[0].disabled = self.page == 1 # type: ignore
+        self.children[1].disabled = self.page == self.total_pages # type: ignore
     
     @discord.ui.button(emoji='\u23EA', style=discord.ButtonStyle.grey)
     async def left_page(self, interaction: discord.Interaction, button: discord.ui.Button):
         if self.page > 1:
             self.page -= 1
         self.update_buttons()
-        await interaction.response.edit_message(embed=self.embeds[self.page][0], view=self)
+        await interaction.response.edit_message(embed=self.embeds[self.page][0], view=self) # type: ignore
 
     @discord.ui.button(emoji='\u23E9', style=discord.ButtonStyle.grey)
     async def right_page(self, interaction: discord.Interaction, button: discord.ui.Button):
         if self.page < self.total_pages:
             self.page += 1
         self.update_buttons()
-        await interaction.response.edit_message(embed=self.embeds[self.page][0], view=self)
+        await interaction.response.edit_message(embed=self.embeds[self.page][0], view=self) # type: ignore
 
 class Data(commands.Cog):
     def __init__(self, bot):
@@ -92,7 +92,7 @@ class Data(commands.Cog):
             per_page = 7
 
             view = await TrackButtonView.create(conn, game_name, per_page, self.bot, interaction.user)
-            embed, file = view.embeds[view.page]
+            embed, file = view.embeds[view.page] # type: ignore
             view.update_buttons()
             await interaction.response.send_message(embed=embed, file=file, view=view)
             
@@ -115,6 +115,7 @@ class Data(commands.Cog):
         else:
             await interaction.response.send_message(msg, ephemeral=True)
 
+    #TODO: pregenerate the hail mary and dead game lists when a new episode drops, and just grab the file whenever you need to update
     @app_commands.command(name="hailmary", description="""Displays Hail Mary games""")
     async def hailmary(self, interaction: discord.Interaction):
         print(f"------\n{interaction.user} wants to know the hail mary list. [{datetime.datetime.now()}]")
@@ -139,7 +140,7 @@ class Data(commands.Cog):
     @app_commands.describe(player='Player')
     async def points(self, interaction: discord.Interaction, player: Optional[discord.Member] = None):
         print(f"------\n{interaction.user} wants to know how many points {player} has. [{datetime.datetime.now()}]")
-        player = player or interaction.user
+        player = player or interaction.user # type: ignore
 
         conn = GeneralSQL.connect()
         msg = ManageData.points(conn, player)
@@ -149,7 +150,7 @@ class Data(commands.Cog):
     @app_commands.describe(player='Player')
     async def submissions(self, interaction: discord.Interaction, player: Optional[discord.Member] = None):
         print(f"------\n{interaction.user} wants to know {player}'s submissions. [{datetime.datetime.now()}]")
-        player = player or interaction.user
+        player = player or interaction.user # type: ignore
 
         conn = GeneralSQL.connect()
         msg = ManageData.submissions(conn, player)
@@ -160,7 +161,7 @@ class Data(commands.Cog):
     @app_commands.describe(player='Player')
     async def hailmarysubmissions(self, interaction: discord.Interaction, player: Optional[discord.Member] = None):
         print(f"------\n{interaction.user} wants to know where {player}'s games are in hail mary. [{datetime.datetime.now()}]")
-        player = player or interaction.user
+        player = player or interaction.user # type: ignore
 
         conn = GeneralSQL.connect()
         msg = ManageData.hail_mary_submissions(conn, player)

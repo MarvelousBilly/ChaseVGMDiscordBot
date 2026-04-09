@@ -32,6 +32,9 @@ __pycache__/
 # ignore the backups
 /data */ 
 
+*/deadgames.txt
+*/hailmary.txt
+
 .vscode/
 
 # C extensions

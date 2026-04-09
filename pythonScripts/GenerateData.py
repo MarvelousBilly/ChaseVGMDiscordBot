@@ -249,6 +249,8 @@ def reset(conn):
 def new_subs(conn): #just add the new subs
     games_expansions_alternates_subs_comments_images(conn, os.path.join(".", "data", "new_subs.txt"))
     debuts(conn) #grabs new subs and new batch
+    update_points_submissions(conn)
+    update_google_sheet(conn)
     print("Done new subs")
     
 def new_episode(conn): #runs after each episode / batch drop
@@ -270,8 +272,8 @@ def main():
     conn = connect()
     
     # reset(conn)
-    # new_subs(conn)
-    which_games_are_missing_arts(conn)
+    new_subs(conn)
+    # which_games_are_missing_arts(conn)
     
 
         

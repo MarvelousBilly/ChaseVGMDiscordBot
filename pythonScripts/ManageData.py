@@ -351,7 +351,7 @@ def game_streaks(conn):
 def main():
     conn = connect()
 
-    merge_tracks(conn, track_id_remove=1729, track_id_keep=12593)
+    # merge_tracks(conn, track_id_remove=1749, track_id_keep=11862)
 
     # which_games_are_missing(conn)
 

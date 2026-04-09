@@ -10,11 +10,9 @@ Hail Mary Games (Last Played)/[Unplayed]
 (550) A Short Hike
 (550) Anarchy Reigns
 (552) Street Fighter V
-(561) Eastward
 (562) Kirby and the Forgotten Land
 (563) Jet Force Gemini
 (563) Mario Kart DS
-(564) Warframe
 (567) Guilty Gear Xrd -Sign-
 (570) Pokémon Colosseum
 (572) Maui Mallard in Cold Shadow
@@ -24,29 +22,31 @@ Hail Mary Games (Last Played)/[Unplayed]
 (576) Sky Ride
 (577) Shin Megami Tensei III: Nocturne
 (578) Dustforce
-(578) WarioWare: Touched!
 (579) Plants vs. Zombies
 [579] Shadowgate
 (579) Spelunker
 [579] Street Fighter 6
-(579) Tekken 7
 (580) Chicory: A Colorful Tale
 (581) Flip Over Frog
 (582) Marvel Super Heroes vs. Street Fighter
 (582) Mega Man: The Wily Wars
-(582) The Elder Scrolls IV: Oblivion
 (582) Wizardry V: Heart of the Maelstrom
-(584) Castlevania: Curse of Darkness
 (584) The Goonies
 (584) Warcraft III: Reign of Chaos
 (585) Atomica Deluxe
-(585) Fire Emblem: Path of Radiance
 (585) MediEvil
-(586) Pokémon Ruby / Sapphire Version
 [587] Arknights
 (589) Mega Man X4
 (589) SpongeBob SquarePants: Battle for Bikini Bottom (Rehydrated)
 (590) Dead Space
-(590) Witch on the Holy Night
 (591) Pokémon Super Mystery Dungeon
 (591) Professor Layton and the Miracle Mask
+(592) Bomb Rush Cyberfunk
+(592) VA-11 HALL-A: Cyberpunk Bartender Action
+(593) Animal Crossing: Wild World
+(593) Mario Tennis
+(594) Ghost Trick: Phantom Detective
+(595) Sonic Chronicles: The Dark Brotherhood
+(596) DOOM II: Hell on Earth
+(597) Fantasian
+(598) Metroid Prime 3: Corruption
