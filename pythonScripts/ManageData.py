@@ -229,9 +229,9 @@ def submissions(conn, player):
     submissions = (regular_subs if regular_subs is not None else 0) + (micro_subs if micro_subs is not None else 0)
 
     c.execute("""
-        SELECT name, subtype, debut
+        SELECT name, subtype
         FROM base_game_debuts
-        WHERE submitter_id = 5
+        WHERE submitter_id = ?
         ORDER BY debut IS NULL, debut
     """, (player_id, ))
     sub_list = c.fetchall()
