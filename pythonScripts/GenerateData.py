@@ -129,8 +129,10 @@ def update_points_submissions(conn):
             VALUES (?, ?, ?, ?, ?)
             ON CONFLICT(name)
             DO UPDATE SET
-                points = excluded.points;
-        """, (player_name, player_points, player_regular_subs, player_micros, player_is_chaser))
+                points = excluded.points,
+                regular_subs = excluded.regular_subs,
+                micro_subs = excluded.micro_subs;        
+            """, (player_name, player_points, player_regular_subs, player_micros, player_is_chaser))
         c.execute("SELECT id FROM players WHERE name = ?", (player_name,))
         player_id = c.fetchone()[0]
         
@@ -272,8 +274,8 @@ def main():
     conn = connect()
     
     # reset(conn)
-    new_subs(conn)
-    # which_games_are_missing_arts(conn)
+    # new_subs(conn)
+    update_points_submissions(conn)
     
 
         

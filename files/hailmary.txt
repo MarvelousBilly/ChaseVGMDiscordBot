@@ -10,12 +10,10 @@ Hail Mary Games (Last Played)/[Unplayed]
 (550) A Short Hike
 (550) Anarchy Reigns
 (552) Street Fighter V
-(562) Kirby and the Forgotten Land
 (563) Jet Force Gemini
 (563) Mario Kart DS
 (567) Guilty Gear Xrd -Sign-
 (570) Pokémon Colosseum
-(572) Maui Mallard in Cold Shadow
 (575) The Witcher 3: Wild Hunt
 (576) Mega Man 10
 (576) Pokémon Diamond / Pearl Version
@@ -50,3 +48,5 @@ Hail Mary Games (Last Played)/[Unplayed]
 (596) DOOM II: Hell on Earth
 (597) Fantasian
 (598) Metroid Prime 3: Corruption
+(598) Paper Mario: The Thousand-Year Door
+(601) Mario Party

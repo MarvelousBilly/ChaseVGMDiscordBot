@@ -229,10 +229,10 @@ def submissions(conn, player):
     submissions = (regular_subs if regular_subs is not None else 0) + (micro_subs if micro_subs is not None else 0)
 
     c.execute("""
-        SELECT name, subtype
+        SELECT name, subtype, debut
         FROM base_game_debuts
-        WHERE submitter_id = ?
-        ORDER BY debut
+        WHERE submitter_id = 5
+        ORDER BY debut IS NULL, debut
     """, (player_id, ))
     sub_list = c.fetchall()
 
@@ -362,7 +362,7 @@ def main():
     # get_episode(conn, 652, Play_Mode.REGULAR)
 
     # print(hail_mary(conn))
-    # print(hail_mary_submissions(conn, 252238807297032192))
+    print(submissions(conn, 336300723409125387))
     # get_track_plays(conn, "eschatos")
     # game_streaks(conn)
 
