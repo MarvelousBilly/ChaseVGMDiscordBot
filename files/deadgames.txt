@@ -2,14 +2,11 @@ Dead Games (Most Recent Play)/<Added to Chase>
 
 (632) Phoenix Wright: Ace Attorney Trilogy
 (637) Empire Earth
-(641) Worms
-(645) Rome: Total War
 (649) Spelunker
 (649) The Chessmaster (SNES)
 (650) Bubble Bobble
 (653) Mounty Mick's Deathride
 (654) Spy vs Spy
-(655) Super International Cricket
 (658) Atomica Deluxe
 (659) Batman: The Caped Crusader
 (659) RollerCoaster Tycoon 2
@@ -18,10 +15,13 @@ Dead Games (Most Recent Play)/<Added to Chase>
 (666) Jump! Ultimate Stars
 (666) Wild Arms 2
 (667) Alchemy
-(667) Super Paper Mario
 (669) Balloon Fight
 (670) SimCity 3000
 (671) Super Locomotive
-(672) THE iDOLM@STER Shiny Colors
-(673) The Legend of Heroes: Trails of Cold Steel III
-(673) Warcraft III: Reign of Chaos
+(674) Atomic Bomberman
+(675) Pokémon Diamond / Pearl Version
+[678] Advance Wars 1+2: Re-Boot Camp
+(678) Streets of Rage 4
+(678) Tetris (C64)
+(678) Tokyo 7th Sisters
+(681) Supraland

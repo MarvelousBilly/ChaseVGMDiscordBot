@@ -18,7 +18,6 @@ Hail Mary Games (Last Played)/[Unplayed]
 (576) Mega Man 10
 (576) Pokémon Diamond / Pearl Version
 (576) Sky Ride
-(577) Shin Megami Tensei III: Nocturne
 (578) Dustforce
 (579) Plants vs. Zombies
 [579] Shadowgate
@@ -30,13 +29,10 @@ Hail Mary Games (Last Played)/[Unplayed]
 (582) Mega Man: The Wily Wars
 (582) Wizardry V: Heart of the Maelstrom
 (584) The Goonies
-(584) Warcraft III: Reign of Chaos
 (585) Atomica Deluxe
-(585) MediEvil
 [587] Arknights
 (589) Mega Man X4
 (589) SpongeBob SquarePants: Battle for Bikini Bottom (Rehydrated)
-(590) Dead Space
 (591) Pokémon Super Mystery Dungeon
 (591) Professor Layton and the Miracle Mask
 (592) Bomb Rush Cyberfunk
@@ -47,6 +43,10 @@ Hail Mary Games (Last Played)/[Unplayed]
 (595) Sonic Chronicles: The Dark Brotherhood
 (596) DOOM II: Hell on Earth
 (597) Fantasian
-(598) Metroid Prime 3: Corruption
 (598) Paper Mario: The Thousand-Year Door
 (601) Mario Party
+(601) The Guardian Legend
+(602) Muscle March
+(602) Sonic and the Secret Rings
+(603) Kirby: Canvas Curse
+(603) Pokémon Snap

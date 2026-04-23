@@ -5,7 +5,7 @@ import random
 from enum import Enum
 import time
 
-from GeneralSQL import *
+from GeneralSQL import * # type: ignore
 
 shorthands = {
     #" ": ["  "],

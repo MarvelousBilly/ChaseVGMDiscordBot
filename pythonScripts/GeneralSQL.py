@@ -96,10 +96,11 @@ def add_track(conn, Track):
             """, (Track.play.episode, Track.play.episode, game_id))
 
 def main():
-    pass
-#     conn = connect()
+    # pass
+    conn = connect()
 # 
-#     add_game(conn, Game("Arknights", Type.REGULAR, 587, 723, None, "MarvelousBilly"))
+    update_game(conn, Game("MediEvil (2019)", expansion_game_id=None))
+    
 #     add_game(conn, Game("Pokemon Gold and Silver", Type.REGULAR | Type.GRADUATED, 587, 2, 16, None))
 #     add_game(conn, Game("Pokemon Red and Blue", Type.REGULAR | Type.GRADUATED, 587, 5, 7, None))
 # 
@@ -110,7 +111,8 @@ def main():
 # 
 #     hail_mary(conn)
 # 
-#     conn.close()
+    conn.commit()
+    conn.close()
 
 if __name__ == "__main__":
     os.chdir(os.path.dirname(os.path.abspath(__file__)))  # current script directory

@@ -15,7 +15,7 @@ from pythonScripts import ManageData
 
 
 
-glorpability = 71
+glorpability = 66
 
 
 

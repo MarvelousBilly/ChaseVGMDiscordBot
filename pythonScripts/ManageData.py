@@ -351,7 +351,7 @@ def game_streaks(conn):
 def main():
     conn = connect()
 
-    # merge_tracks(conn, track_id_remove=1749, track_id_keep=11862)
+    # merge_tracks(conn, track_id_remove=12128, track_id_keep=12614)
 
     # which_games_are_missing(conn)
 
@@ -362,7 +362,7 @@ def main():
     # get_episode(conn, 652, Play_Mode.REGULAR)
 
     # print(hail_mary(conn))
-    print(submissions(conn, 336300723409125387))
+    print(submissions(conn, 120137608016691200))
     # get_track_plays(conn, "eschatos")
     # game_streaks(conn)
 

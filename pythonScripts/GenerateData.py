@@ -275,7 +275,10 @@ def main():
     
     # reset(conn)
     # new_subs(conn)
+    debuts(conn)
+    update_game_last_play(conn)
     update_points_submissions(conn)
+    update_google_sheet(conn)
     
 
         
