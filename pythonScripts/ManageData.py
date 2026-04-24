@@ -347,6 +347,57 @@ def game_streaks(conn):
                     print(f"{game_name} played {streak[1]} times in a row on episode {current_episode}")
                 streak = [game_from_track_id(track_id), 1]
     
+def boost_data(conn, game_id, game_name):
+    c = conn.cursor()
+
+    c.execute("""
+        SELECT double_noosts, noosts, neutrals, boosts, double_boosts, score, easy, graduated 
+        FROM boosts
+        WHERE game_id = ?
+    """, (game_id, ))
+
+    fetched_data = c.fetchone()
+
+    double_noosts = (fetched_data[0])
+    noosts        = (fetched_data[1])
+    neutrals      = (fetched_data[2])
+    boosts        = (fetched_data[3])
+    double_boosts = (fetched_data[4])
+
+    score       = fetched_data[5]
+    easy        = fetched_data[6]
+    graduate    = fetched_data[7]
+
+    gradCheck = "*not* " if graduate == 0 else ""
+    easyCheck = " It is considered an easy game." if easy == 1 else ""
+    
+    msg = f"""**{game_name}**
+This game has a total boost score of **{score}**. It has {gradCheck}graduated.{easyCheck}
+```
+Double Boosts (+2): {double_boosts}
+Boosts        (+1): {boosts}
+Neutrals      (+0): {neutrals}
+Noosts        (-1): {noosts}
+Double Noosts (-2): {double_noosts}
+```"""
+    return msg
+
+def very_hard(conn):
+    c = conn.cursor()
+    c.execute("""
+        SELECT game_id, score 
+        FROM boosts 
+        WHERE score <= -2 
+        ORDER BY score
+    """)
+    vh_game_ids = c.fetchall()
+    msg = ""
+    
+    for game_id, score in vh_game_ids:
+        game_name = get_game_name_from_id(conn, game_id)
+        msg += f"({score}) {game_name}\n"
+
+    return msg
 
 def main():
     conn = connect()
@@ -362,9 +413,11 @@ def main():
     # get_episode(conn, 652, Play_Mode.REGULAR)
 
     # print(hail_mary(conn))
-    print(submissions(conn, 120137608016691200))
+    # print(submissions(conn, 120137608016691200))
     # get_track_plays(conn, "eschatos")
     # game_streaks(conn)
+    # print(boost_data(conn, 378, "Ghost Trick"))
+    print(very_hard(conn))
 
 if __name__ == "__main__":
     os.chdir(os.path.dirname(os.path.abspath(__file__)))  # current script directory

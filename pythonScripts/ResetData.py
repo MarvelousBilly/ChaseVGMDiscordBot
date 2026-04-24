@@ -38,9 +38,9 @@ def games_expansions_alternates_subs_comments_images(conn, filepath):
 
     def add_alt_name(game_id, alt_name):
         conn.execute("""
-            INSERT OR IGNORE INTO game_alt_names (alt_name, game_id)
+            INSERT OR IGNORE INTO game_alt_names (game_id, alt_name)
             VALUES (?, ?)
-        """, (alt_name, game_id))
+        """, (game_id, alt_name))
     
     current_game_name = None
     current_base_id = None

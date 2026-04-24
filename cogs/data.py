@@ -168,6 +168,31 @@ class Data(commands.Cog):
         await interaction.response.send_message(msg)
 
 
+    @app_commands.command(name="boostdata", description="""Displays the boost score for a given game""")
+    @app_commands.describe(game='Game')
+    async def boostdata(self, interaction: discord.Interaction, game: str):
+        print(f"------\n{interaction.user} wants to know the boost data for {game}. [{datetime.datetime.now()}]")
+        conn = GeneralSQL.connect()
+        match, game_name, game_id, msg = GameSearch.search(conn, game)
+        if(match):
+            if(game_name == "UNBEATABLE" and (game.lower() != game and game.upper() != game)): 
+                await interaction.response.send_message("literally die", ephemeral=True)
+                return
+
+            msg = ManageData.boost_data(conn, game_id, game_name)
+            await interaction.response.send_message(msg)
+        else:
+            await interaction.response.send_message(msg, ephemeral=True)
+
+    @app_commands.command(name="veryhard", description="""Displays the Very Hard games, those that have a boost score of -2 or less""")
+    async def veryhard(self, interaction: discord.Interaction):
+        print(f"------\n{interaction.user} wants to know the very hard data. [{datetime.datetime.now()}]")
+        conn = GeneralSQL.connect()
+
+        msg = ManageData.very_hard(conn)
+        with open(os.path.join(".","files","veryhard.txt"), 'w', encoding='utf-8', errors='replace') as f:
+            f.write(msg)
+        await interaction.response.send_message(file=discord.File(os.path.join(".","files","veryhard.txt")))
 
 
 async def setup(bot):

@@ -14,6 +14,136 @@ from Helpers import *
 from UpdateGoogleSheet import *
 import GoogleSheetsAPI
 
+def update_scores(conn):
+    def update_sheet():
+        scoreID = "1qJ1Pkeqy7DTlGwDymSalzyUXKJZfYPIi6r3Qvq7KXHE"
+        scoreRange = "Boost Data!A2:H1500"
+        scoreFilename = os.path.join(".", "data", "sheets", "scores")
+        GoogleSheetsAPI.main(scoreID, scoreRange, scoreFilename)
+        return (scoreFilename + "_values.csv"), (scoreFilename + "_notes.csv")
+    
+    c = conn.cursor()
+    score_values_name, score_notes_name = update_sheet()
+
+    game_boosts = {}
+    
+    row_notes = []
+    row_value = []
+    
+    with open(score_values_name, 'r', newline='', encoding='utf-8') as csvfile:
+        csvreader = csv.reader(csvfile)
+        for row in csvreader:
+            row_value.append(row)
+
+    with open(score_notes_name, 'r', newline='', encoding='utf-8') as csvfile:
+        csvreader = csv.reader(csvfile)
+        for row in csvreader:
+            row_notes.append(row)
+
+    for i, row in enumerate(row_value):
+        if len(row) < 4:
+            continue  # skip incomplete rows
+
+        game_id = row[0]
+        grad = (1 if row[5].lower().strip() == "yes" else (-1 if row[5].lower().strip() == "n/a" else 0)) #1 if grad, 0 if not, -1 if micro
+        easy = (1 if row[7].lower().strip() == "yes" else 0)
+        firstnoost = '1' if "*" in (row[6] if len(row) > 6 else '') else '0'
+        score = (row[6] if len(row) > 6 else '').replace('*','')
+
+        game_boosts[game_id] = {
+            'graduated': grad       if len(row) > 5 else None,
+            'score':     int(score) if len(row) > 6 else None,
+            'easy':      easy       if len(row) > 7 else None,
+            'firstnoost': firstnoost if len(row) > 6 else None,
+            'double_boosts': None,
+            'boosts': None,
+            'neutrals': None,
+            'noosts': None,
+            'double_noosts': None
+        }
+        
+    for i, row in enumerate(row_notes):
+        if i >= len(row_value):
+            break  # Extra note rows not present in values
+
+        game_id = row_value[i][0]
+
+        # Use safe extraction for each column
+        boost_note  = row[1] if len(row) > 1 else ''
+        neust_note  = row[2] if len(row) > 2 else ''
+        noost_note  = row[3] if len(row) > 3 else ''
+
+        split_boosts = boost_note.split('\n') if boost_note else []
+        split_neusts = neust_note.split('\n') if neust_note else []
+        split_noosts = noost_note.split('\n') if noost_note else []
+
+        doubleboosts = sum('(x2)' in element for element in split_boosts)
+        singles      = len(split_boosts) - doubleboosts if split_boosts else 0
+        neusts       = len(split_neusts)
+        doublenoosts = sum('(x2)' in element for element in split_noosts)
+        noosts       = len(split_noosts) - doublenoosts if split_noosts else 0
+                    
+        if game_id in game_boosts:
+            game_boosts[game_id]['double_boosts'] = doubleboosts
+            game_boosts[game_id]['boosts']        = singles
+            game_boosts[game_id]['neutrals']      = neusts
+            game_boosts[game_id]['noosts']        = noosts
+            game_boosts[game_id]['double_noosts'] = doublenoosts
+            
+    # print(game_boosts)
+    for key, value in game_boosts.items():
+
+        c.execute("""
+            SELECT g.id
+            FROM games g
+            LEFT JOIN game_alt_names a ON a.game_id = g.id
+            WHERE g.name = ? COLLATE NOCASE
+                OR a.alt_name = ? COLLATE NOCASE
+            LIMIT 1
+        """, (key, key))
+
+        game_id = c.fetchone()
+        if(game_id == None):
+            # raise ValueError(f"Aakadarian has a weird name for {key} :(")
+            intended_id = int(input(f"What's the ID of {key}: "))
+            #create alternate name for game_id intended_id with value of key
+            c.execute("""
+                INSERT OR IGNORE INTO game_alt_names (game_id, alt_name)
+                VALUES (?, ?)
+            """, (intended_id, key))
+            conn.commit()
+
+            c.execute("""
+                SELECT g.id
+                FROM games g
+                LEFT JOIN game_alt_names a ON a.game_id = g.id
+                WHERE g.name = ? COLLATE NOCASE
+                    OR a.alt_name = ? COLLATE NOCASE
+                LIMIT 1
+            """, (key, key))
+            game_id = c.fetchone()
+
+        game_id = game_id[0]
+
+        c.execute("""
+            INSERT INTO boosts (game_id, double_noosts, noosts, neutrals, boosts, double_boosts, score, easy, graduated)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT(game_id) DO UPDATE SET
+                double_noosts = excluded.double_noosts,
+                noosts        = excluded.noosts,
+                neutrals      = excluded.neutrals,
+                boosts        = excluded.boosts,
+                double_boosts = excluded.double_boosts,
+                score         = excluded.score,
+                easy          = excluded.easy,
+                graduated     = excluded.graduated
+        """, (game_id, value['double_noosts'], value['noosts'], value['neutrals'], value['boosts'], value['double_boosts'], value['score'], value['easy'], value['graduated']))
+
+    conn.commit()
+
+
+
+
 def debuts(conn): #will work whenever
     def update_sheet():
         debutID = "1BC1Kpx8j8BXBIOIsHxEeDIaThjlrPY3OATRWeV7J24U" #snag this opportunity to update debut data (could crontab it to be every month but whatever this is fine
@@ -268,17 +398,16 @@ def new_episode(conn): #runs after each episode / batch drop
         return e
     
 
-
-
 def main():
     conn = connect()
     
     # reset(conn)
     # new_subs(conn)
-    debuts(conn)
-    update_game_last_play(conn)
-    update_points_submissions(conn)
-    update_google_sheet(conn)
+    # debuts(conn)
+    # update_game_last_play(conn)
+    # update_points_submissions(conn)
+    # update_google_sheet(conn)
+    update_scores(conn)
     
 
         
