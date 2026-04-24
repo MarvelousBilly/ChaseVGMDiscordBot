@@ -174,13 +174,14 @@ class Data(commands.Cog):
         print(f"------\n{interaction.user} wants to know the boost data for {game}. [{datetime.datetime.now()}]")
         conn = GeneralSQL.connect()
         match, game_name, game_id, msg = GameSearch.search(conn, game)
+
         if(match):
             if(game_name == "UNBEATABLE" and (game.lower() != game and game.upper() != game)): 
                 await interaction.response.send_message("literally die", ephemeral=True)
                 return
 
-            msg = ManageData.boost_data(conn, game_id, game_name)
-            await interaction.response.send_message(msg)
+            msg, eph = ManageData.boost_data(conn, game_id, game_name)
+            await interaction.response.send_message(msg, ephemeral=eph)
         else:
             await interaction.response.send_message(msg, ephemeral=True)
 

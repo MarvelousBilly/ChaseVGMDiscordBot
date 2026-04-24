@@ -358,6 +358,10 @@ def boost_data(conn, game_id, game_name):
 
     fetched_data = c.fetchone()
 
+    if(fetched_data == None):
+        return f"""**{game_name}**
+This game has yet to play, and has no boost score.""", True
+
     double_noosts = (fetched_data[0])
     noosts        = (fetched_data[1])
     neutrals      = (fetched_data[2])
@@ -380,7 +384,7 @@ Neutrals      (+0): {neutrals}
 Noosts        (-1): {noosts}
 Double Noosts (-2): {double_noosts}
 ```"""
-    return msg
+    return msg, False
 
 def very_hard(conn):
     c = conn.cursor()
@@ -416,8 +420,8 @@ def main():
     # print(submissions(conn, 120137608016691200))
     # get_track_plays(conn, "eschatos")
     # game_streaks(conn)
-    # print(boost_data(conn, 378, "Ghost Trick"))
-    print(very_hard(conn))
+    print(boost_data(conn, 59, "Arknights"))
+    # print(very_hard(conn))
 
 if __name__ == "__main__":
     os.chdir(os.path.dirname(os.path.abspath(__file__)))  # current script directory

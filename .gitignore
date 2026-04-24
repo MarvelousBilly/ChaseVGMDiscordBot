@@ -25,6 +25,7 @@ __pycache__/
 
 # dont include these temp files
 */files/*
+files/*
 
 # dont include the discord id or new sub stuff
 */player_discord_id.txt
