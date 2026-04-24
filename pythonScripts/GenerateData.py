@@ -104,7 +104,7 @@ def update_scores(conn):
 
         game_id = c.fetchone()
         if(game_id == None):
-            # raise ValueError(f"Aakadarian has a weird name for {key} :(")
+            raise ValueError(f"Aakadarian has a weird name for {key} :(")
             intended_id = int(input(f"What's the ID of {key}: "))
             #create alternate name for game_id intended_id with value of key
             c.execute("""
@@ -387,13 +387,18 @@ def new_subs(conn): #just add the new subs
     
 def new_episode(conn): #runs after each episode / batch drop
     e = add_episode(conn)
-    if(e is None): #if the episode add is all fine and dandy:
-        update_game_last_play(conn)
-        which_games_are_missing_arts(conn) #print out any games (base only) that have missing boxarts (or filename is wrong)
-        update_points_submissions(conn)
-        update_google_sheet(conn)
-        print("Done update")
-    else:
+    try:
+        if(e is None): #if the episode add is all fine and dandy:
+            update_scores(conn)
+            update_game_last_play(conn)
+            which_games_are_missing_arts(conn) #print out any games (base only) that have missing boxarts (or filename is wrong)
+            update_points_submissions(conn)
+            update_google_sheet(conn)
+            print("Done update")
+        else:
+            print(f"Error: {e}")
+            return e
+    except:
         print(f"Error: {e}")
         return e
     
