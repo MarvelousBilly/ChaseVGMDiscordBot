@@ -420,7 +420,9 @@ def main():
     # print(submissions(conn, 120137608016691200))
     # get_track_plays(conn, "eschatos")
     # game_streaks(conn)
-    print(boost_data(conn, 59, "Arknights"))
+    # print(boost_data(conn, 59, "Arknights"))
+    print(dead_games(conn, 25))
+    print(hail_mary(conn))
     # print(very_hard(conn))
 
 if __name__ == "__main__":

@@ -47,7 +47,7 @@ class TrackButtonView(discord.ui.View):
             glorpability -= 1
             if glorpability == 0:
                 glorpability = 100
-            random_glorp = random.randint(0, 42)
+            random_glorp = random.randint(0, 43)
             filename = os.path.join(".", "data", "glorp", f"glorp{random_glorp:02d}.png")
 
             channel = bot.get_channel(1046279004925206578)
@@ -122,7 +122,7 @@ class Data(commands.Cog):
         conn = GeneralSQL.connect()
 
         msg = ManageData.hail_mary(conn)
-        with open(os.path.join(".","files","hailmary.txt"), 'w', encoding='utf-8', errors='replace') as f:
+        with open(os.path.join(".","files","hailmary.txt"), 'w', encoding='utf-8-sig', errors='replace') as f:
             f.write(msg)
         await interaction.response.send_message(file=discord.File(os.path.join(".","files","hailmary.txt")))
 
@@ -132,7 +132,7 @@ class Data(commands.Cog):
         conn = GeneralSQL.connect()
 
         msg = ManageData.dead_games(conn, 25)
-        with open(os.path.join(".","files","deadgames.txt"), 'w', encoding='utf-8', errors='replace') as f:
+        with open(os.path.join(".","files","deadgames.txt"), 'w', encoding='utf-8-sig', errors='replace') as f:
             f.write(msg)
         await interaction.response.send_message(file=discord.File(os.path.join(".","files","deadgames.txt")))
 

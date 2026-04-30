@@ -1,13 +1,11 @@
 Hail Mary Games (Last Played)/[Unplayed]
 
-(504) Kingdom Hearts Re:Chain of Memories
 (510) Ratchet and Clank
 (532) Pokémon X / Y
 (536) Pikmin 3
 (539) Turok 2: Seeds of Evil
 (545) Little Nemo: The Dream Master
 (548) Splatoon 2
-(550) A Short Hike
 (550) Anarchy Reigns
 (552) Street Fighter V
 (563) Jet Force Gemini
@@ -27,7 +25,6 @@ Hail Mary Games (Last Played)/[Unplayed]
 (581) Flip Over Frog
 (582) Marvel Super Heroes vs. Street Fighter
 (582) Mega Man: The Wily Wars
-(582) Wizardry V: Heart of the Maelstrom
 (584) The Goonies
 (585) Atomica Deluxe
 [587] Arknights
@@ -39,7 +36,6 @@ Hail Mary Games (Last Played)/[Unplayed]
 (592) VA-11 HALL-A: Cyberpunk Bartender Action
 (593) Animal Crossing: Wild World
 (593) Mario Tennis
-(594) Ghost Trick: Phantom Detective
 (595) Sonic Chronicles: The Dark Brotherhood
 (596) DOOM II: Hell on Earth
 (597) Fantasian
@@ -50,3 +46,7 @@ Hail Mary Games (Last Played)/[Unplayed]
 (602) Sonic and the Secret Rings
 (603) Kirby: Canvas Curse
 (603) Pokémon Snap
+(603) X-Men Legends
+(604) Dissidia 012 Final Fantasy
+(604) Fable
+(604) Mega Man X2
