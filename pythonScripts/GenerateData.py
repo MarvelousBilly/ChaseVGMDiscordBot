@@ -398,7 +398,7 @@ def new_episode(conn): #runs after each episode / batch drop
         else:
             print(f"Error: {e}")
             return e
-    except:
+    except Exception as e:
         print(f"Error: {e}")
         return e
     
@@ -408,12 +408,15 @@ def main():
     
     # reset(conn)
     # new_subs(conn)
-    # debuts(conn)
-    # update_game_last_play(conn)
-    # update_points_submissions(conn)
-    # update_google_sheet(conn)
+    debuts(conn)    
+    # add_alt_name_manual(conn, 1210, "Senko no Ronde 2 (Senko no Ronde DUO: Dis-United Order)")
     update_scores(conn)
-    
+    update_game_last_play(conn)
+    which_games_are_missing_arts(conn) #print out any games (base only) that have missing boxarts (or filename is wrong)
+    update_points_submissions(conn)
+    update_google_sheet(conn)
+    print("Done update")
+
 
         
 if __name__ == "__main__":

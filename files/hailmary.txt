@@ -1,34 +1,24 @@
-Hail Mary Games (Last Played)/[Unplayed]
+﻿Hail Mary Games (Last Played)/[Unplayed]
 
-(510) Ratchet and Clank
 (532) Pokémon X / Y
 (536) Pikmin 3
 (539) Turok 2: Seeds of Evil
-(545) Little Nemo: The Dream Master
 (548) Splatoon 2
 (550) Anarchy Reigns
-(552) Street Fighter V
 (563) Jet Force Gemini
 (563) Mario Kart DS
-(567) Guilty Gear Xrd -Sign-
-(570) Pokémon Colosseum
 (575) The Witcher 3: Wild Hunt
 (576) Mega Man 10
-(576) Pokémon Diamond / Pearl Version
 (576) Sky Ride
-(578) Dustforce
 (579) Plants vs. Zombies
 [579] Shadowgate
-(579) Spelunker
 [579] Street Fighter 6
-(580) Chicory: A Colorful Tale
 (581) Flip Over Frog
 (582) Marvel Super Heroes vs. Street Fighter
 (582) Mega Man: The Wily Wars
 (584) The Goonies
 (585) Atomica Deluxe
 [587] Arknights
-(589) Mega Man X4
 (589) SpongeBob SquarePants: Battle for Bikini Bottom (Rehydrated)
 (591) Pokémon Super Mystery Dungeon
 (591) Professor Layton and the Miracle Mask
@@ -37,7 +27,6 @@ Hail Mary Games (Last Played)/[Unplayed]
 (593) Animal Crossing: Wild World
 (593) Mario Tennis
 (595) Sonic Chronicles: The Dark Brotherhood
-(596) DOOM II: Hell on Earth
 (597) Fantasian
 (598) Paper Mario: The Thousand-Year Door
 (601) Mario Party
@@ -50,3 +39,14 @@ Hail Mary Games (Last Played)/[Unplayed]
 (604) Dissidia 012 Final Fantasy
 (604) Fable
 (604) Mega Man X2
+(604) Professor Layton vs. Phoenix Wright: Ace Attorney
+(605) Atomic Bomberman
+(605) Eternal Champions: Challenge from the Dark Side
+(605) Metal Masters
+(606) Bravely Default II
+(606) Valkyrie Profile
+(607) MegaRace
+(608) Everhood
+(609) Castlevania: Dracula X
+(610) Sam & Max Save The World
+[610] Total Distortion

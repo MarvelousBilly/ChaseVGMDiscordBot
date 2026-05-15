@@ -12,6 +12,7 @@ __pycache__/
 
 # dont add any databases
 */*.db
+*/*.dn
 
 # dont add my keys
 */keys/

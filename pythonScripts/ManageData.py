@@ -202,6 +202,8 @@ def points(conn, player):
     if chaser == True:
         msg += f"Chaser has {regular_subs} submission" + ("s" if (regular_subs != 1 and regular_subs) else "")
     else:
+        if regular_subs is None:
+            regular_subs = 0
         subCost = (int(regular_subs)+1) * 100
         msg += f"player has **{points}** total points, and needs {subCost} for their next submission.\nThey currently have {regular_subs} submission" + ("s" if (regular_subs != 1 and regular_subs) else "")
 
@@ -300,15 +302,17 @@ def hail_mary_submissions(conn, player):
 
     average_distance = []
 
+    has_lined = False
     for game_name, has_played, place in sub_list:
         average_distance.append(0 if place <= 50 else (place - 50))
         last_play_format = ('(' if has_played else '[') + ("HM" if place <= 50 else str(place - 50)) + (')' if has_played else ']')
-        if(place <= 50):
+        if(place <= 50 and not has_lined):
             msg_end += "-" * max([len(l[0]) + 6 for l in sub_list]) + "\n"
+            has_lined = True
         msg_end += (f"{last_play_format:>5} {game_name}\n")
 
     average_distance = int(mean(average_distance))
-    msg += "'s submission" + ("s" if submissions > 1 else "") + f" are on average **{average_distance}** from entering hail mary.\n```\n"
+    msg += "'s submission" + ("s" if submissions > 1 else "") + f" are on average **{average_distance}** games from entering hail mary.\n```\n"
     msg += msg_end + "```"
 
     return(msg)
@@ -406,7 +410,7 @@ def very_hard(conn):
 def main():
     conn = connect()
 
-    # merge_tracks(conn, track_id_remove=12128, track_id_keep=12614)
+    merge_tracks(conn, track_id_remove=2629, track_id_keep=12818)
 
     # which_games_are_missing(conn)
 
@@ -421,8 +425,8 @@ def main():
     # get_track_plays(conn, "eschatos")
     # game_streaks(conn)
     # print(boost_data(conn, 59, "Arknights"))
-    print(dead_games(conn, 25))
-    print(hail_mary(conn))
+    # print(dead_games(conn, 25))
+    # print(hail_mary(conn))
     # print(very_hard(conn))
 
 if __name__ == "__main__":

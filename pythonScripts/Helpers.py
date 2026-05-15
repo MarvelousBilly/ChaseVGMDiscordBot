@@ -76,3 +76,10 @@ def which_games_are_missing_arts(conn):
         if not os.path.exists(filepath):
             print(f'{cleanFilename(game_name)}')
 
+def add_alt_name_manual(conn, game_id, alt_name):
+    c = conn.cursor()
+    c.execute("""
+        INSERT OR IGNORE INTO game_alt_names (game_id, alt_name)
+        VALUES (?, ?)
+    """, (game_id, alt_name))
+    conn.commit()

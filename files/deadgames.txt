@@ -1,8 +1,6 @@
-Dead Games (Most Recent Play)/<Added to Chase>
+﻿Dead Games (Most Recent Play)/<Added to Chase>
 
-(632) Phoenix Wright: Ace Attorney Trilogy
 (637) Empire Earth
-(649) Spelunker
 (649) The Chessmaster (SNES)
 (650) Bubble Bobble
 (653) Mounty Mick's Deathride
@@ -19,9 +17,11 @@ Dead Games (Most Recent Play)/<Added to Chase>
 (670) SimCity 3000
 (671) Super Locomotive
 (674) Atomic Bomberman
-(675) Pokémon Diamond / Pearl Version
 [678] Advance Wars 1+2: Re-Boot Camp
 (678) Streets of Rage 4
 (678) Tetris (C64)
 (678) Tokyo 7th Sisters
 (681) Supraland
+(682) A High Fiber, Japanese Empire Cereal
+(682) Castlevania: Portrait of Ruin
+(682) Monster Rancher 2
